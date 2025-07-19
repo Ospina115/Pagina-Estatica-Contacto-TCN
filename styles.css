@@ -9,20 +9,94 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* Fondo para móviles por defecto */
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('images/backgroundmovile.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     min-height: 100vh;
     padding: 20px;
+}
+
+/* Fondo para tablets y computadores */
+@media (min-width: 768px) {
+    body {
+        background: 
+            linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+            url('images/backgroundlaptop.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+}
+
+/* Optimizaciones para rendimiento de imágenes */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Asegurar que las imágenes se carguen suavemente */
+body {
+    transition: background-image 0.3s ease-in-out;
+}
+
+/* Fallback para navegadores que no soporten las imágenes */
+@supports not (background-attachment: fixed) {
+    body {
+        background-attachment: scroll;
+    }
+}
+
+/* Optimización para dispositivos con conexión lenta */
+@media (prefers-reduced-data: reduce) {
+    body {
+        background-image: none;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+}
+
+/* Clase para indicar que la imagen de fondo se cargó */
+body.background-loaded {
+    background-attachment: fixed;
+}
+
+/* Transición suave para la carga de fondo */
+body:not(.background-loaded) {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .container {
     max-width: 400px;
     margin: 0 auto;
     padding: 30px 20px;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgb(10, 0, 88, 0.45);
     border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15px);
     animation: fadeInUp 0.8s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+img {
+    display: block;
+    margin: 0 auto 20px;
+    width: 20%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 10px;
+    animation: fadeInUp 1s ease-out 0.2s both;
 }
 
 @keyframes fadeInUp {
@@ -39,15 +113,15 @@ body {
 /* Títulos */
 h1 {
     text-align: center;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     margin-bottom: 15px;
-    color: #2c3e50;
+    color: #ffffff;
     animation: slideInDown 1s ease-out 0.2s both;
 }
 
 h1 strong {
-    color: #667eea;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #eaac66;
+    background: linear-gradient(135deg, #ea7a66, #e2a75a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -56,7 +130,7 @@ h1 strong {
 h3 {
     text-align: center;
     font-size: 1rem;
-    color: #7f8c8d;
+    color: #e4e4e4;
     margin-bottom: 30px;
     font-weight: 400;
     animation: slideInDown 1s ease-out 0.4s both;
@@ -79,6 +153,7 @@ h3 {
     flex-direction: column;
     gap: 15px;
     animation: fadeIn 1s ease-out 0.6s both;
+    padding-bottom: 10%;
 }
 
 @keyframes fadeIn {

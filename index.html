@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto Territorio</title>
+    
+    <!-- Preload de imágenes para optimizar carga -->
+    <link rel="preload" as="image" href="images/backgroundmovile.jpg" media="(max-width: 767px)">
+    <link rel="preload" as="image" href="images/backgroundlaptop.jpg" media="(min-width: 768px)">
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Contactanos para conocer mas y vive <strong>un nuevo concepto de oficinas</strong></h1>
+        <h1>Contactanos para <strong>conocer</strong> mas</h1>
         <h3>@territoreiocentrodenegocios</h3>
         <div class="botones">
             <div class="boton-container">
@@ -23,7 +28,10 @@
             <button class="boton-principal">Reserva una oficina o consultorio</button>
             <button class="boton-principal">Visita nuestra pagina web</button>
         </div>
+        <h1>Vive un nuevo concepto de <strong>oficinas</strong></h1>
+        <img src="/images/territoriocentrodenegocios logo.png" alt="logotcn">
     </div>
+    
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -44,5 +52,8 @@
             });
         });
     </script>
+    
+    <!-- Script de optimización de imágenes de fondo -->
+    <script src="background-optimizer.js"></script>
 </body>
 </html>
