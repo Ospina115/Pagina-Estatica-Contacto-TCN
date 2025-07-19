@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto Territorio</title>
-    
+    <link rel="icon" type="image/x-icon" href="images/territoriocentrodenegocios logo.png">
     <!-- Preload de imágenes para optimizar carga -->
     <link rel="preload" as="image" href="images/backgroundmovile.jpg" media="(max-width: 767px)">
     <link rel="preload" as="image" href="images/backgroundlaptop.jpg" media="(min-width: 768px)">
@@ -23,7 +23,19 @@
                     <button class="boton-sede">Sede Floridablanca, Cañaveral</button>
                 </div>
             </div>
-            <button class="boton-principal">Horarios</button>
+            <div class="boton-container">
+                <button class="boton-principal" id="btn-horarios">Horarios</button>
+                <div class="horarios-submenu" id="horarios-submenu">
+                    <div class="horario-item">
+                        <span class="dia">Lunes a Viernes</span>
+                        <span class="hora">8:00 AM - 12:00 PM y 2:00 PM - 6:00 PM</span>
+                    </div>
+                    <div class="horario-item">
+                        <span class="dia">Sábados</span>
+                        <span class="hora">8:00 AM - 12:00 PM y 2:00 PM - 5:00 PM</span>
+                    </div>
+                </div>
+            </div>
             <button class="boton-principal">Comunicate con nosotros</button>
             <button class="boton-principal">Reserva una oficina o consultorio</button>
             <button class="boton-principal">Visita nuestra pagina web</button>
@@ -37,10 +49,23 @@
         document.addEventListener('DOMContentLoaded', function() {
             const btnSedes = document.getElementById('btn-sedes');
             const sedesSubmenu = document.getElementById('sedes-submenu');
+            const btnHorarios = document.getElementById('btn-horarios');
+            const horariosSubmenu = document.getElementById('horarios-submenu');
             
             btnSedes.addEventListener('click', function() {
                 sedesSubmenu.classList.toggle('activo');
                 btnSedes.classList.toggle('activo');
+                // Cerrar otros submenus
+                horariosSubmenu.classList.remove('activo');
+                btnHorarios.classList.remove('activo');
+            });
+            
+            btnHorarios.addEventListener('click', function() {
+                horariosSubmenu.classList.toggle('activo');
+                btnHorarios.classList.toggle('activo');
+                // Cerrar otros submenus
+                sedesSubmenu.classList.remove('activo');
+                btnSedes.classList.remove('activo');
             });
             
             // Cerrar submenu al hacer clic fuera
@@ -48,7 +73,32 @@
                 if (!e.target.closest('.boton-container')) {
                     sedesSubmenu.classList.remove('activo');
                     btnSedes.classList.remove('activo');
+                    horariosSubmenu.classList.remove('activo');
+                    btnHorarios.classList.remove('activo');
                 }
+            });
+            
+            // Funcionalidad para el botón de página web
+            const btnPaginaWeb = document.querySelector('.boton-principal:last-child');
+            btnPaginaWeb.addEventListener('click', function() {
+                window.open('https://www.territoriocentrodenegocios.com/', '_blank');
+            });
+
+            // Funcionalidad para comunicarse con un asesor
+            const btnComunicate = document.querySelector('.boton-principal:nth-child(3)');
+            btnComunicate.addEventListener('click', function() {
+                window.open('https://api.whatsapp.com/send?phone=573167880609&text=¡Hola!%20Quiero%20ser%20parte%20de%20Territorio.', '_blank');
+            });
+
+            // Funcionalidad al hacer clic en sede bucaramanga
+            const btnSedeBucaramanga = document.querySelector('.boton-sede:nth-child(1)');
+            btnSedeBucaramanga.addEventListener('click', function() {
+                window.open('https://www.google.com/maps/place/Territorio+Centro+de+Negocios/@7.1235422,-73.1165128,17z/data=!3m1!4b1!4m6!3m5!1s0x8e683fe70f19a747:0xe4857281a9316d04!8m2!3d7.1235422!4d-73.1139379!16s%2Fg%2F11cn065b7z?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D', '_blank');
+            });
+            // Funcionalidad al hacer clic en sede floridablanca
+            const btnSedeFloridablanca = document.querySelector('.boton-sede:nth-child(2)');
+            btnSedeFloridablanca.addEventListener('click', function() {
+                window.open('https://www.google.com/maps/place/Territorio+Centro+de+Negocios/@7.0691063,-73.1048134,19z/data=!4m6!3m5!1s0x8e683ffe9b6a72fb:0x10998cb659581362!8m2!3d7.069106!4d-73.1043709!16s%2Fg%2F11wfscwl2p?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D', '_blank');
             });
         });
     </script>
