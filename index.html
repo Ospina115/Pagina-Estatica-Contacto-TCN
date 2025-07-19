@@ -100,6 +100,12 @@
             btnSedeFloridablanca.addEventListener('click', function() {
                 window.open('https://www.google.com/maps/place/Territorio+Centro+de+Negocios/@7.0691063,-73.1048134,19z/data=!4m6!3m5!1s0x8e683ffe9b6a72fb:0x10998cb659581362!8m2!3d7.069106!4d-73.1043709!16s%2Fg%2F11wfscwl2p?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D', '_blank');
             });
+
+            // Funcionalidad para reservar una oficina o consultorio
+            const btnReserva = document.querySelector('.boton-principal:nth-child(4)');
+            btnReserva.addEventListener('click', function() {
+                window.open('https://api.whatsapp.com/send?phone=573171868555&text=¡Hola!%20Quiero%20reservar%20un%20espacio%20de%20trabajo%20con%20Territorio.', '_blank');
+            });
         });
     </script>
     
