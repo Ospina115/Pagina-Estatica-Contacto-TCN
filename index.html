@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto Territorio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Contactanos para conocer mas y vive <strong>un nuevo concepto de oficinas</strong></h1>
+        <h3>@territoreiocentrodenegocios</h3>
+        <div class="botones">
+            <div class="boton-container">
+                <button class="boton-principal" id="btn-sedes">Sedes</button>
+                <div class="sedes-submenu" id="sedes-submenu">
+                    <button class="boton-sede">Sede Bucaramanga</button>
+                    <button class="boton-sede">Sede Floridablanca, Cañaveral</button>
+                </div>
+            </div>
+            <button class="boton-principal">Horarios</button>
+            <button class="boton-principal">Comunicate con nosotros</button>
+            <button class="boton-principal">Reserva una oficina o consultorio</button>
+            <button class="boton-principal">Visita nuestra pagina web</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnSedes = document.getElementById('btn-sedes');
+            const sedesSubmenu = document.getElementById('sedes-submenu');
+            
+            btnSedes.addEventListener('click', function() {
+                sedesSubmenu.classList.toggle('activo');
+                btnSedes.classList.toggle('activo');
+            });
+            
+            // Cerrar submenu al hacer clic fuera
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.boton-container')) {
+                    sedesSubmenu.classList.remove('activo');
+                    btnSedes.classList.remove('activo');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Títulos */
+h1 {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+    animation: slideInDown 1s ease-out 0.2s both;
+}
+
+h1 strong {
+    color: #667eea;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1rem;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+    font-weight: 400;
+    animation: slideInDown 1s ease-out 0.4s both;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Contenedor de botones */
+.botones {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    animation: fadeIn 1s ease-out 0.6s both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Contenedor especial para el botón de sedes */
+.boton-container {
+    position: relative;
+}
+
+/* Estilos para botones principales */
+.boton-principal {
+    width: 100%;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.boton-principal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.boton-principal:hover::before {
+    left: 100%;
+}
+
+.boton-principal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.boton-principal:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Estilo especial para el botón de sedes cuando está activo */
+.boton-principal.activo {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(118, 75, 162, 0.4);
+}
+
+/* Submenu de sedes */
+.sedes-submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.sedes-submenu.activo {
+    max-height: 120px;
+    margin-top: 10px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Botones de sedes */
+.boton-sede {
+    width: 100%;
+    padding: 12px 20px;
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.boton-sede:last-child {
+    margin-bottom: 0;
+}
+
+.boton-sede::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.boton-sede:hover {
+    color: white;
+    border-color: #667eea;
+    transform: translateX(5px);
+}
+
+.boton-sede:hover::before {
+    left: 0;
+}
+
+.boton-sede:active {
+    transform: translateX(3px) scale(0.98);
+}
+
+/* Animaciones de entrada para los botones */
+.boton-principal {
+    animation: slideInLeft 0.6s ease-out backwards;
+}
+
+.boton-principal:nth-child(1) { animation-delay: 0.1s; }
+.boton-principal:nth-child(2) { animation-delay: 0.2s; }
+.boton-principal:nth-child(3) { animation-delay: 0.3s; }
+.boton-principal:nth-child(4) { animation-delay: 0.4s; }
+.boton-principal:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Efectos de pulso sutil */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.boton-principal:focus {
+    outline: none;
+    animation: pulse 0.6s ease-in-out;
+}
+
+/* Media queries para tablets */
+@media (min-width: 768px) {
+    .container {
+        max-width: 500px;
+        padding: 40px 30px;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+    
+    h3 {
+        font-size: 1.1rem;
+        margin-bottom: 35px;
+    }
+    
+    .boton-principal {
+        padding: 18px 25px;
+        font-size: 1.1rem;
+    }
+    
+    .boton-sede {
+        padding: 14px 25px;
+        font-size: 1rem;
+    }
+}
+
+/* Media queries para desktop */
+@media (min-width: 1024px) {
+    body {
+        padding: 40px;
+    }
+    
+    .container {
+        max-width: 600px;
+        padding: 50px 40px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+    
+    h3 {
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+    }
+    
+    .botones {
+        gap: 18px;
+    }
+    
+    .boton-principal {
+        padding: 20px 30px;
+        font-size: 1.1rem;
+        border-radius: 15px;
+    }
+    
+    .boton-sede {
+        padding: 16px 30px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+    
+    .sedes-submenu.activo {
+        max-height: 140px;
+        margin-top: 12px;
+    }
+}
+
+/* Animación para dispositivos que prefieren movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
